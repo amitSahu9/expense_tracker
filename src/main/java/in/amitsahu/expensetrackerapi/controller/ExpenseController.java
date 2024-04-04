@@ -20,6 +20,8 @@ public class ExpenseController {
     @ResponseStatus(code = HttpStatus.OK)
     public List<Expense> getAllExpenses(Pageable page)
     {
+        int number = 1;
+        calculateFactorial(number);
         return expenseService.getAllExpenses(page).toList();
     }
 
@@ -51,5 +53,11 @@ public class ExpenseController {
     public Expense updateExpenseDetails(@RequestBody Expense expense, @PathVariable Long id)
     {
         return expenseService.updateExpense(id, expense);
+    }
+
+    public int calculateFactorial(int number)
+    {
+        if(number < 1) return number;
+        return number * calculateFactorial(number-1);
     }
 }
