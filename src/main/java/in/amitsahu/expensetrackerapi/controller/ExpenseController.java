@@ -2,6 +2,7 @@ package in.amitsahu.expensetrackerapi.controller;
 
 import in.amitsahu.expensetrackerapi.entity.Expense;
 import in.amitsahu.expensetrackerapi.service.ExpenseService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -50,7 +51,7 @@ public class ExpenseController {
 
     @PutMapping("/expenses/{id}")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public Expense updateExpenseDetails(@RequestBody Expense expense, @PathVariable Long id)
+    public Expense updateExpenseDetails(@Valid @RequestBody Expense expense, @PathVariable Long id)
     {
         return expenseService.updateExpense(id, expense);
     }
